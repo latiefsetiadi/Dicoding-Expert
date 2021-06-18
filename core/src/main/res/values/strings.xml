@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_items">Title</string>
+    <string name="genre_items">genre</string>
+    <string name="image_items">Image</string>
+    <string name="EXTRA_ID">extra_id</string>
+</resources>
