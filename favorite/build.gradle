@@ -43,4 +43,5 @@ dependencies {
     implementation project(":app")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    implementation "com.airbnb.android:lottie:3.4.1"
 }
