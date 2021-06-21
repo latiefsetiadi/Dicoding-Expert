@@ -148,7 +148,8 @@
         android:layout_margin="16dp"
         app:fabSize="normal"
         android:elevation="6dp"
-        app:borderWidth="0dp" />
+        app:borderWidth="0dp"
+        android:contentDescription="@string/ICON" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
