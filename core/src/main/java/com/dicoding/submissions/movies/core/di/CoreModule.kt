@@ -8,6 +8,8 @@ import com.dicoding.submissions.movies.core.data.source.remote.RemoteDataSource
 import com.dicoding.submissions.movies.core.data.source.remote.retrofit.ApiServices
 import com.dicoding.submissions.movies.core.domain.repository.IMovieRepository
 import com.dicoding.submissions.movies.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -19,11 +21,15 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<MovieDatabase>().movieDao() }
     single {
+        val passPhrase: ByteArray = SQLiteDatabase.getBytes("latiefdicoding".toCharArray())
+        val factory = SupportFactory(passPhrase)
         Room.databaseBuilder(
             androidContext(),
             MovieDatabase::class.java,
             "Movies.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
